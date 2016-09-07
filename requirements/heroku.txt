@@ -1,0 +1,4 @@
+-r common.txt
+dj-database-url
+gunicorn
+psycopg2

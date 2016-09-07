@@ -1,0 +1,12 @@
+dist: trusty
+language: python
+
+python:
+  - 3.5
+env:
+  - TEST_SUITE=test
+
+install:
+  - devel/travis/setup-$TEST_SUITE
+script:
+  - devel/travis/$TEST_SUITE

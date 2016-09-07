@@ -1,0 +1,26 @@
+# cache/gen
+*.pyc
+__pycache__/
+/README.html
+/readme.html
+output.txt
+
+# local
+*.db
+/project_conf/settings/local.py
+/staticfiles/
+/extstatic/
+
+# private
+secret.txt
+secret/
+/TODO.txt
+/.env
+
+# Trash
+*~
+*.sw[po]
+Desktop.ini
+.DS_Store
+.AppleDouble
+.LSOverride
