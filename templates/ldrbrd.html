@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title_block %}Welcome{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <h1>{{contest_id}} - {{contest.name}}</h1>
+    <p> Status: {{contest.phase}} </p>
+    <table>
+    <thead>
+        <tr>
+            <td>Rank</td>
+            <td>Username</td>
+            <td>Points</td>
+            {% for problem in problems %}
+                <td>{{problem.index}} ({{problem.points}})</td>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for participant in participants %}
+        <tr>
+            <td> {{participant.rank}} </td>
+            <td> {{participant.username}}{% if participant.type != 'CONTESTANT' %}*{% endif %} </td>
+            <td> {{participant.points}} </td>
+            {% for attempt in participant.attempts %}
+                {% if attempt.points == 0 %}
+                    <td> - </td>
+                {% else %}
+                    <td> {{attempt.points}} </td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}

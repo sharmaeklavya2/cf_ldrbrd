@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title_block %}
+        {% if base_title %}
+            {{base_title}}
+        {% else %}
+            {{PROJECT_TITLE}}
+        {% endif %}
+    {% endblock %}</title>
+    <link rel="stylesheet" href="/static/base.css" />
+    {% block style_block %}
+    {% endblock %}
+</head>
+<body>
+{% block body_block %}
+{{base_body}}
+{% endblock %}
+</body>
+</html>
