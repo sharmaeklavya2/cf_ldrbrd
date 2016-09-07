@@ -81,3 +81,7 @@ We use whitenoise to serve static assets.
 
 We also have a .travis.yml to run tests automatically on Travis CI.
 The travis helper scripts are located in `devel/travis/`.
+
+## License
+
+All code is licensed under [GNU GPLv3](http://www.gnu.org/licenses/gpl-3.0.txt).
