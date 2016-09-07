@@ -6,6 +6,15 @@ contest leaderboard only for those usernames.
 This webapp has only been tested on Ubuntu 16.04.
 It is compatible with python 3.5+.
 
+To use this webapp, you have to add a list of users who will be shown on the leaderboard.
+To do that, you have to add objects of the type `django.contrib.auth.models.User`
+whose `username` field is the same as their username on Codeforces.
+That can be easily done from using Django's admin interface (`/admin/`).
+
+All usernames registered on this webapp should be present on Codeforces, including the superuser.
+
+After users have been registered, you can see their relative performance at `/ldrbrd/<contest_id>/`.
+
 ## Deploying on Heroku
 
 ### Required environment variables
@@ -20,8 +29,8 @@ It is compatible with python 3.5+.
 2.  Setup environment variables as specified above.
 3.  Push code to heroku app.
 4.  Run a one-off dyno (using `heroku run bash`) and run these commands on it:
-    * `python manage.py makemigrations`.
     * `python manage.py migrate`.
+    * `python manage.py collectstatic`.
     * `python manage.py createsuperuser`. Now fill out details of the superuser.
 
 ## Deploying locally for testing
@@ -60,6 +69,8 @@ We use whitenoise to serve static assets.
 * `main` - The main django app.
 * `project_conf` - Project settings. Also contains root urlconf and wsgi.py.
 * `requirements` - Project requirements for dev and heroku.
+* `templates` - all templates used with Django's templating system.
+* `static` - all static files created for this project.
 
 ## Automated testing
 
