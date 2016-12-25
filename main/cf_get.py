@@ -59,6 +59,7 @@ class Participant:
     rank = 0 # type: int
     points = 0.0 # type: float
     attempts = [] # type: List[Attempt]
+    color = '' # type: str
 
     def __init__(self, ranklist_row):
         # type: (Mapping[str, Any]) -> None
@@ -154,6 +155,14 @@ def get_contest_info(contest_id, usernames, show_unofficial):
     contest = Contest(result["contest"])
     problems = [Problem(prob) for prob in result["problems"]]
     participants = [Participant(row) for row in result["rows"]]
+
+    try:
+        userlist = get_user_info(usernames)
+        colormap = {user.username: user.color for user in userlist}
+        for p in participants:
+            p.color = colormap.get(p.username, '')
+    except CfApiError:
+        pass
 
     return (contest, problems, participants)
 

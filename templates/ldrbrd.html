@@ -28,7 +28,9 @@
                 <td></td>
                 <td></td>
             {% endif %}
-            <td> {{participant.username}}{% if participant.type != 'CONTESTANT' %}*{% endif %} </td>
+            <td {% if participant.color %}class="cf_{{participant.color}}"{% endif %}>
+                {{participant.username}}{% if participant.type != 'CONTESTANT' %}*{% endif %}
+            </td>
             <td> {{participant.points}} </td>
             {% for attempt in participant.attempts %}
                 {% if attempt.points == 0 %}
