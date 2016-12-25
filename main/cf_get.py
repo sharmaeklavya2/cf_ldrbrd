@@ -20,7 +20,7 @@ class Contest:
 
 class Problem:
     name = '' # type: str
-    index = '' # type: index
+    index = '' # type: str
     points = 0.0 # type: float
 
     def __init__(self, problem):
