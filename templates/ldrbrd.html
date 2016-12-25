@@ -14,7 +14,7 @@
             <td>Username</td>
             <td>Points</td>
             {% for problem in problems %}
-                <td>{{problem.index}} ({{problem.points}})</td>
+                <td>{{problem.index}}{% if problem.points %}({{problem.points}}){% endif %}</td>
             {% endfor %}
         </tr>
     </thead>

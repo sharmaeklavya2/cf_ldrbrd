@@ -9,11 +9,13 @@ BASE_URL = 'http://codeforces.com/api'
 class Contest:
     name = '' # type: str
     phase = '' # type: str
+    type = '' # type: str
 
     def __init__(self, contest):
         # type: (Mapping[str, Any]) -> None
         self.name = contest["name"]
         self.phase = contest["phase"]
+        self.type = contest["type"]
 
     def __str__(self) -> str:
         return "Contest({}, {})".format(repr(self.name), self.phase)
@@ -28,7 +30,7 @@ class Problem:
     def __init__(self, problem):
         # type: (Mapping[str, Any]) -> None
         self.name = problem["name"]
-        self.points = problem["points"]
+        self.points = problem.get("points", 0)
         self.index = problem["index"]
 
     def __str__(self) -> str:
