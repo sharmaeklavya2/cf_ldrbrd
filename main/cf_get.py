@@ -71,6 +71,39 @@ class Participant:
     def __repr__(self) -> str:
         return str(self)
 
+class CfUser:
+    username = '' # type: str
+    first_name = '' # type: str
+    last_name = '' # type: str
+    rating = 0 # type: int
+    color = '' # type: str
+
+    rank_to_color = {
+        "legendary grandmaster": "lgm",
+        "international grandmaster": "igm",
+        "grandmaster": "gm",
+        "international master": "im",
+        "master": "master",
+        "candidate master": "cm",
+        "expert": "expert",
+        "specialist": "specialist",
+        "pupil": "pupil",
+        "newbie": "newbie",
+    }
+
+    def __init__(self, userinfo):
+        # type: (Mapping[str, Any]) -> None
+        self.username = userinfo['handle']
+        self.first_name = userinfo.get('firstName', '')
+        self.last_name = userinfo.get('lastName', '')
+        self.rating = userinfo.get('rating', 0)
+        self.color = self.rank_to_color.get(userinfo.get('rank', ''), '')
+
+    def __str__(self) -> str:
+        return 'CfUser({})'.format(self.username)
+    def __repr__(self) -> str:
+        return str(self)
+
 class CfApiError(Exception):
     response = None # type: Optional[requests.Response]
     http_error = None # type: Optional[requests.exceptions.HTTPError]
@@ -95,6 +128,14 @@ def log_and_request(**kwargs):
         raise CfApiError(response)
 
     return response
+
+def get_user_info(usernames):
+    # type: (Iterable[str]) -> List[CfUser]
+    query = {'handles': ';'.join(usernames)}
+    response = log_and_request(url = BASE_URL + '/user.info', params=query)
+    result = response.json()["result"]
+
+    return [CfUser(userinfo) for userinfo in result]
 
 def get_contest_info(contest_id, usernames, show_unofficial):
     # type: (int, Iterable[str], bool) -> Tuple[Contest, List[Problem], List[Participant]]
