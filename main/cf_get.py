@@ -4,6 +4,8 @@ import json
 import requests
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Tuple
 
+BASE_URL = 'http://codeforces.com/api'
+
 class Contest:
     name = '' # type: str
     phase = '' # type: str
@@ -78,6 +80,22 @@ class CfApiError(Exception):
         self.response = response
         self.http_error = http_error
 
+def log_and_request(**kwargs):
+    # type: (**Any) -> requests.Response
+    prequest = requests.Request('GET', **kwargs).prepare()
+    print('GET', prequest.url)
+    with requests.Session() as session:
+        response = session.send(prequest)
+
+    try:
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as http_error:
+        raise CfApiError(response, http_error)
+    if response.json()["status"] != 'OK':
+        raise CfApiError(response)
+
+    return response
+
 def get_contest_info(contest_id, usernames, show_unofficial):
     # type: (int, Iterable[str], bool) -> Tuple[Contest, List[Problem], List[Participant]]
 
@@ -87,16 +105,9 @@ def get_contest_info(contest_id, usernames, show_unofficial):
         'showUnofficial': 'true' if show_unofficial else 'false',
     } # type: Dict[str, Any]
 
-    response = requests.get('http://codeforces.com/api/contest.standings', params=query)
-    try:
-        response.raise_for_status()
-    except requests.exceptions.HTTPError as http_error:
-        raise CfApiError(response, http_error)
-    response_json = response.json()
-    if response_json["status"] != 'OK':
-        raise CfApiError(response)
-    result = response_json["result"]
+    response = log_and_request(url = BASE_URL + '/contest.standings', params=query)
 
+    result = response.json()['result']
     contest = Contest(result["contest"])
     problems = [Problem(prob) for prob in result["problems"]]
     participants = [Participant(row) for row in result["rows"]]
