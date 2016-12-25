@@ -3,6 +3,7 @@
 import json
 import requests
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Tuple
+from datetime import timedelta
 
 BASE_URL = 'http://codeforces.com/api'
 
@@ -42,11 +43,13 @@ class Attempt:
     # An attempt is a set of submissions to a particular problem by a particular user
     points = 0.0 # type: float
     rejects = 0 # type: int
+    time = timedelta(0) # type: timedelta
 
     def __init__(self, problem_result):
         # type: (Mapping[str, Any]) -> None
         self.points = problem_result["points"]
         self.rejects = problem_result["rejectedAttemptCount"]
+        self.time = timedelta(seconds=problem_result.get("bestSubmissionTimeSeconds", 0))
 
     def __str__(self) -> str:
         return 'Attempt({}, {})'.format(self.points, self.rejects)

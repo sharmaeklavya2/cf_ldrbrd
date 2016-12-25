@@ -41,7 +41,7 @@
                 {% if attempt.points == 0 %}
                     <td> - </td>
                 {% else %}
-                    <td> {{attempt.points}} </td>
+                    <td> {{attempt.points}} {% if p.type != 'PRACTICE' %}({{attempt.time}}){% endif %}</td>
                 {% endif %}
             {% endfor %}
         </tr>
