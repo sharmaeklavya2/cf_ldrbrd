@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', main.views.index),
     url(r'^ldrbrd/(?P<contest_id>[1-9]\d*)/$', main.views.ldrbrd),
+    url(r'^ldrbrd/$', main.views.ldrbrd),
 ]
