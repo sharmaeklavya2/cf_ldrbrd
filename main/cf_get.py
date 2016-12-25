@@ -60,6 +60,7 @@ class Participant:
     points = 0.0 # type: float
     attempts = [] # type: List[Attempt]
     color = '' # type: str
+    is_team = False # type: bool
 
     def __init__(self, ranklist_row):
         # type: (Mapping[str, Any]) -> None
@@ -68,6 +69,7 @@ class Participant:
         self.points = ranklist_row["points"]
         self.attempts = [Attempt(att) for att in ranklist_row["problemResults"]]
         self.username = ranklist_row["party"].get("teamName") or ranklist_row["party"]["members"][0]["handle"]
+        self.is_team = "teamName" in ranklist_row["party"]
 
     def __str__(self) -> str:
         return 'Participant({}, {})'.format(self.username, self.type)
