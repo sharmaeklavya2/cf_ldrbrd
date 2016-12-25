@@ -4,7 +4,7 @@
 
 {% block body_block %}
 <div class="container">
-    <h1>{{contest_id}} - {{contest.name}}</h1>
+    <h1><a href="http://codeforces.com/contest/{{contest_id}}">{{contest_id}}</a> - {{contest.name}}</h1>
     <p> Phase: {{contest.phase}} </p>
     <table>
     <thead>
@@ -14,7 +14,10 @@
             <td>Username</td>
             <td>Points</td>
             {% for problem in problems %}
-                <td>{{problem.index}}{% if problem.points %}({{problem.points}}){% endif %}</td>
+                <td>
+                <a href="http://codeforces.com/contest/{{contest_id}}/problem/{{problem.index}}">{{problem.index}}</a>
+                {% if problem.points %}({{problem.points}}){% endif %}
+                </td>
             {% endfor %}
         </tr>
     </thead>
