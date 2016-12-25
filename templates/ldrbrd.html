@@ -5,11 +5,12 @@
 {% block body_block %}
 <div class="container">
     <h1>{{contest_id}} - {{contest.name}}</h1>
-    <p> Status: {{contest.phase}} </p>
+    <p> Phase: {{contest.phase}} </p>
     <table>
     <thead>
         <tr>
-            <td>Rank</td>
+            <td>Intra Rank</td>
+            <td>CF Rank</td>
             <td>Username</td>
             <td>Points</td>
             {% for problem in problems %}
@@ -20,7 +21,13 @@
     <tbody>
         {% for participant in participants %}
         <tr>
-            <td> {{participant.rank}} </td>
+            {% if participant.rank %}
+                <td> {{forloop.counter}} </td>
+                <td> {{participant.rank}} </td>
+            {% else %}
+                <td></td>
+                <td></td>
+            {% endif %}
             <td> {{participant.username}}{% if participant.type != 'CONTESTANT' %}*{% endif %} </td>
             <td> {{participant.points}} </td>
             {% for attempt in participant.attempts %}
