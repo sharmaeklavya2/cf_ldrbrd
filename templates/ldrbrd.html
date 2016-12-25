@@ -19,20 +19,20 @@
         </tr>
     </thead>
     <tbody>
-        {% for participant in participants %}
+        {% for p in participants %}
         <tr>
-            {% if participant.rank %}
+            {% if p.rank %}
                 <td> {{forloop.counter}} </td>
-                <td> {{participant.rank}} </td>
+                <td> {{p.rank}} </td>
             {% else %}
                 <td></td>
                 <td></td>
             {% endif %}
-            <td {% if participant.color %}class="cf_{{participant.color}}"{% endif %}>
-                {{participant.username}}{% if participant.type != 'CONTESTANT' %}*{% endif %}
+            <td {% if p.color %}class="cf_{{p.color}}"{% endif %}>
+                {{p.username}}{% if p.type != 'CONTESTANT' %}*{% endif %}
             </td>
-            <td> {{participant.points}} </td>
-            {% for attempt in participant.attempts %}
+            <td> {{p.points}} </td>
+            {% for attempt in p.attempts %}
                 {% if attempt.points == 0 %}
                     <td> - </td>
                 {% else %}
