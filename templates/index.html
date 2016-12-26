@@ -6,6 +6,9 @@
 <h1>{{PROJECT_TITLE}}</h1>
 
 <p> This web application shows codeforces contest leaderboards of all usernames registered on this web application. </p>
+{% if settings.SHOW_ADD_USERS_PAGE %}
+<p><a href="/add_users/">Add users</a></p>
+{% endif %}
 
 <form method="GET" action="/ldrbrd/" id="contest_form">
     <div class="form-group">
