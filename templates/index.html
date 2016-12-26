@@ -3,8 +3,24 @@
 {% block title_block %}Welcome{% endblock %}
 
 {% block body_block %}
-<div class="container">
-    <h1>{{PROJECT_TITLE}}</h1>
-    <p> This website is under construction. </p>
-</div>
+<h1>{{PROJECT_TITLE}}</h1>
+
+<p> This web application shows codeforces contest leaderboards of all usernames registered on this web application. </p>
+
+<form method="GET" action="/ldrbrd/" id="contest_form">
+    <div class="form-group">
+        <label for="contest_id">Contest ID:</label>
+        <input type="text" name="contest" value="" required="required" id="contest_id" />
+    </div>
+    <div class="form-group">
+        Show Unofficial:
+        <input type="radio" name="show_unofficial" value="true" />
+        <label for="true_label"> True </label>
+        <input type="radio" name="show_unofficial" value="false" />
+        <label for="false_label"> False </label>
+    </div>
+    <div class="form-group">
+        <button type="submit">Show leaderboard</button>
+    </div>
+</form>
 {% endblock %}
