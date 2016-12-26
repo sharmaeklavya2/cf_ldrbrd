@@ -10,9 +10,6 @@ def base_response(request, body, title=None):
         context_dict["base_title"] = title
     return render(request, "base.html", context_dict)
 
-def index(request):
-    return render(request, "index.html", {})
-
 def ldrbrd(request, contest_id=None):
     try:
         contest_id = int(contest_id or request.GET.get('contest'))
@@ -38,7 +35,7 @@ def ldrbrd(request, contest_id=None):
         }
         return render(request, "ldrbrd.html", context)
 
-def add_users(request):
+def index(request):
     if not settings.SHOW_ADD_USERS_PAGE:
         raise Http404('add_users page has been disabled')
     context = {}
@@ -73,4 +70,4 @@ def add_users(request):
                     context["update_success"] = "Successfully updated user{} {}.".format(plural, ", ".join(updated_users))
         else:
             context["error"] = "Usernames field cannot be empty."
-    return render(request, "add_users.html", context)
+    return render(request, "index.html", context)
