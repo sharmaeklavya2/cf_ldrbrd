@@ -78,10 +78,13 @@ admin.site.site_title = PROJECT_TITLE
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+BOOTSTRAP_CSS_LOCAL_URL = '/static/bootstrap.css'
+BOOTSTRAP_JS_LOCAL_URL = '/static/bootstrap.js'
+BOOTSTRAP_CSS_CDN_URL = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'
+BOOTSTRAP_JS_CDN_URL = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js'
 
 # Import other settings
 

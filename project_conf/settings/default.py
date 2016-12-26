@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import os
 from os.path import dirname, abspath
+from . import BOOTSTRAP_CSS_LOCAL_URL, BOOTSTRAP_JS_LOCAL_URL
 
 CONF_DIR = dirname(dirname(abspath(__file__)))
 BASE_DIR = dirname(CONF_DIR)
@@ -16,7 +17,6 @@ SECRET_KEY = 'y&-@_e)08kzk711q0qqrklqj^0%d%0z&s5#s9qj!be&i*w+hra'
 
 AUTH_PASSWORD_VALIDATORS = []
 
-
 # Database
 
 DATABASES = {
@@ -29,3 +29,9 @@ DATABASES = {
 # Time zone
 
 TIME_ZONE = 'Asia/Kolkata'
+
+# Static assets
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), os.path.join(BASE_DIR, 'extstatic')]
+BOOTSTRAP_CSS_URL = BOOTSTRAP_CSS_LOCAL_URL
+BOOTSTRAP_JS_URL = BOOTSTRAP_JS_LOCAL_URL

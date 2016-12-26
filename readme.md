@@ -63,6 +63,9 @@ You can change settings to use something else.
 
 We use whitenoise to serve static assets.
 
+To improve the look of web pages, download `bootstrap.css` and `bootstrap.js`
+and place them in a directory named `extstatic`.
+
 ## Directory structure
 
 * `devel` - Tools to help with development and testing.
