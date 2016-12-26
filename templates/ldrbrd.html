@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title_block %}Welcome{% endblock %}
+{% block title_block %} CF {{contest_id}} leaderboard {% endblock %}
 
 {% block body_block %}
 <div class="container">
@@ -41,7 +41,7 @@
                 {% if attempt.points == 0 %}
                     <td> - </td>
                 {% else %}
-                    <td> {{attempt.points}} {% if p.type != 'PRACTICE' %}({{attempt.time}}){% endif %}</td>
+                    <td> {{attempt.points}} {% if p.type != 'PRACTICE' %}<br />({{attempt.time}}){% endif %}</td>
                 {% endif %}
             {% endfor %}
         </tr>
