@@ -25,15 +25,18 @@ def ldrbrd(request, contest_id=None):
 
     usernames = User.objects.values_list('username', flat=True)
 
-    contest, problems, participants = get_contest_info(contest_id, usernames, show_unofficial)
-
-    context = {
-        "contest_id": contest_id,
-        "contest": contest,
-        "problems": problems,
-        "participants": participants,
-    }
-    return render(request, "ldrbrd.html", context)
+    try:
+        contest, problems, participants = get_contest_info(contest_id, usernames, show_unofficial)
+    except CfApiError as e:
+        raise Http404(e.response.json()['comment'])
+    else:
+        context = {
+            "contest_id": contest_id,
+            "contest": contest,
+            "problems": problems,
+            "participants": participants,
+        }
+        return render(request, "ldrbrd.html", context)
 
 def add_users(request):
     if not settings.SHOW_ADD_USERS_PAGE:
