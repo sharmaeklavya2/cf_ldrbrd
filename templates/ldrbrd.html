@@ -31,10 +31,12 @@
                 <td></td>
                 <td></td>
             {% endif %}
-            <td {% if p.color %}class="cf_{{p.color}}"{% endif %}>
-                {% if not p.is_team %}<a href="http://codeforces.com/profile/{{p.username}}">{% endif %}
-                {{p.username}}{% if p.type != 'CONTESTANT' %}*{% endif %}
-                {% if p.is_team %}</a>{% endif %}
+            <td>
+                {% if not p.is_team %}
+                <a href="http://codeforces.com/profile/{{p.username}}"
+                    {% if p.color %}class="cf_{{p.color}} cf_user"{% endif %}>
+                {% endif %}
+                {{p.username}}{% if not p.is_team %}</a>{% endif %}{% if p.type != 'CONTESTANT' %}*{% endif %}
             </td>
             <td> {{p.points}} </td>
             {% for attempt in p.attempts %}

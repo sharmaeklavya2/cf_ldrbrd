@@ -1,4 +1,4 @@
-td,th
+td, th
 {
 	border: 1px solid black;
 	padding: 2px 8px;
@@ -9,3 +9,24 @@ table
 	border: 1px solid black;
 	border-collapse: collapse;
 }
+
+.cf_user
+{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cf_lgm, .cf_igm, .cf_gm
+{color: red;}
+.cf_im, .cf_master
+{color: #FF8C00;}
+.cf_cm
+{color: #a0a;}
+.cf_expert
+{color: blue;}
+.cf_specialist
+{color: #03A89E;}
+.cf_pupil
+{color: green;}
+.cf_newbie
+{color: gray;}
