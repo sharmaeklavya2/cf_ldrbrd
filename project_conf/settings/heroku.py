@@ -8,7 +8,7 @@ CONF_DIR = dirname(dirname(abspath(__file__)))
 BASE_DIR = dirname(CONF_DIR)
 CONF_DIR_NAME = os.path.relpath(BASE_DIR, CONF_DIR)
 
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = os.environ["SECRET_KEY"]
 
