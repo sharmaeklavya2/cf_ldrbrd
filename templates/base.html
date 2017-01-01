@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>{% block title_block %}
         {% if base_title %}
             {{base_title}}
@@ -10,8 +11,10 @@
             {{PROJECT_TITLE}}
         {% endif %}
     {% endblock %}</title>
+
     <link rel="stylesheet" href="{{settings.BOOTSTRAP_CSS_URL}}" />
     <link rel="stylesheet" href="/static/base.css" />
+
     {% block style_block %}
     {% endblock %}
 </head>
@@ -19,6 +22,7 @@
 {% block body_block %}
 {{base_body}}
 {% endblock %}
+
 <script src="{{settings.JQUERY_URL}}"></script>
 <script src="{{settings.BOOTSTRAP_JS_URL}}"></script>
 </body>
