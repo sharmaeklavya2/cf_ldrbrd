@@ -11,6 +11,33 @@
 
         <div class="col-sm-6">
         <div class="card card-block">
+            <form method="GET" action="/ldrbrd/" id="contest_form" role="form" >
+                <div class="form-group row">
+                    <label for="contest_id" class="col-sm-6" >Contest ID:</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="contest" value="" required="required" id="contest_id" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">Show Unofficial:</div>
+                    <div class="col-sm-6">
+                        <label class="control-label">
+                        <input type="radio" name="show_unofficial" value="true" /> True </label>
+                        <label class="control-label">
+                        <input type="radio" name="show_unofficial" value="false" /> False </label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <button type="submit" class="btn btn-primary">Show leaderboard</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+
+        <div class="col-sm-6">
+        <div class="card card-block">
             <p>Enter a semicolon-separated list of usernames to add.</p>
             <form method="POST" action="." id="add_users_form">
                 {% csrf_token %}
@@ -48,32 +75,6 @@
         </div>
         </div>
 
-        <div class="col-sm-6">
-        <div class="card card-block">
-            <form method="GET" action="/ldrbrd/" id="contest_form" role="form" >
-                <div class="form-group row">
-                    <label for="contest_id" class="col-sm-6" >Contest ID:</label>
-                    <div class="col-sm-6">
-                        <input type="text" name="contest" value="" required="required" id="contest_id" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-6">Show Unofficial:</div>
-                    <div class="col-sm-6">
-                        <label class="control-label">
-                        <input type="radio" name="show_unofficial" value="true" /> True </label>
-                        <label class="control-label">
-                        <input type="radio" name="show_unofficial" value="false" /> False </label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" class="btn btn-primary">Show leaderboard</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        </div>
     </div>
 </div>
 {% endblock %}
