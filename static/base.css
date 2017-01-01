@@ -16,17 +16,27 @@ table
     font-weight: bold;
 }
 
-.cf_lgm, .cf_igm, .cf_gm
+.cf_lgm, .cf_igm, .cf_gm,
+.cf_lgm:hover, .cf_igm:hover, .cf_gm:hover,
+.cf_lgm:focus, .cf_igm:focus, .cf_gm:focus
 {color: red;}
-.cf_im, .cf_master
+
+.cf_im, .cf_master,
+.cf_im:hover, .cf_master:hover,
+.cf_im:focus, .cf_im:focus
 {color: #FF8C00;}
-.cf_cm
+
+.cf_cm, .cf_cm:hover, .cf_cm:focus
 {color: #a0a;}
-.cf_expert
+
+.cf_expert, .cf_expert:hover, .cf_expert:focus
 {color: blue;}
-.cf_specialist
+
+.cf_specialist, .cf_specialist:hover, .cf_specialist:focus
 {color: #03A89E;}
-.cf_pupil
+
+.cf_pupil, .cf_pupil:hover, .cf_pupil:focus
 {color: green;}
-.cf_newbie
+
+.cf_newbie, .cf_newbie:hover, .cf_newbie:focus
 {color: gray;}
