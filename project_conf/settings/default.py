@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import os
 from os.path import dirname, abspath
-from . import BOOTSTRAP_CSS_LOCAL_URL, BOOTSTRAP_JS_LOCAL_URL
+from . import JQUERY_LOCAL_URL, BOOTSTRAP_CSS_LOCAL_URL, BOOTSTRAP_JS_LOCAL_URL
 
 CONF_DIR = dirname(dirname(abspath(__file__)))
 BASE_DIR = dirname(CONF_DIR)
@@ -33,5 +33,6 @@ TIME_ZONE = 'Asia/Kolkata'
 # Static assets
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), os.path.join(BASE_DIR, 'extstatic')]
+JQUERY_URL = JQUERY_LOCAL_URL
 BOOTSTRAP_CSS_URL = BOOTSTRAP_CSS_LOCAL_URL
 BOOTSTRAP_JS_URL = BOOTSTRAP_JS_LOCAL_URL

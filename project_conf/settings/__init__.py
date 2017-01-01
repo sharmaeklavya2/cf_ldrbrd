@@ -81,6 +81,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+JQUERY_LOCAL_URL = STATIC_URL + 'jquery.js'
+JQUERY_CDN_URL = 'https://code.jquery.com/jquery-3.1.1.min.js'
 BOOTSTRAP_CSS_LOCAL_URL = STATIC_URL + 'bootstrap.css'
 BOOTSTRAP_JS_LOCAL_URL = STATIC_URL + 'bootstrap.js'
 BOOTSTRAP_CSS_CDN_URL = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css'
