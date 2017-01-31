@@ -7,13 +7,14 @@ This webapp has only been tested on Ubuntu 16.04.
 It is compatible with python 3.5+.
 
 To use this webapp, you have to add a list of users who will be shown on the leaderboard.
-To do that, you have to add objects of the type `django.contrib.auth.models.User`
+To do that, you can either use the form on the index page of the webapp,
+or you can add objects of the type `django.contrib.auth.models.User` to the database
 whose `username` field is the same as their username on Codeforces.
 That can be easily done from using Django's admin interface (`/admin/`).
 
-All usernames registered on this webapp should be present on Codeforces, including the superuser.
-
 After users have been registered, you can see their relative performance at `/ldrbrd/<contest_id>/`.
+This page will show the relative performance of all users (even the superuser)
+registered on this webapp who took part in that codeforces contest.
 
 ## Deploying on Heroku
 
