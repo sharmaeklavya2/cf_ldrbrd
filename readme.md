@@ -10,7 +10,7 @@ To use this webapp, you have to add a list of users who will be shown on the lea
 To do that, you can either use the form on the index page of the webapp,
 or you can add objects of the type `django.contrib.auth.models.User` to the database
 whose `username` field is the same as their username on Codeforces.
-That can be easily done from using Django's admin interface (`/admin/`).
+That can be easily done using Django's admin interface (`/admin/`).
 
 After users have been registered, you can see their relative performance at `/ldrbrd/<contest_id>/`.
 This page will show the relative performance of all users (even the superuser)
@@ -46,7 +46,9 @@ It is recommended to use a virtualenv.
     python manage.py createsuperuser
     python manage.py runserver
 
-Now go to http://localhost:8000/admin/ to check out your webapp.
+Now go to http://localhost:8000 to check out your webapp.
+
+You can find the admin interface at http://localhost:8000/admin/.
 
 ## Settings
 
@@ -56,8 +58,9 @@ Settings can be found in `project_conf/settings/`:
 * `default.py` contains settings to run the development environment.
 * `__init__.py` contains the common settings.
 
-If you want to override settings, it is recommended to copy `default.py`
+If you want to modify settings, it is recommended to copy `default.py`
 to a new file `local.py` and make changes there, to avoid messing things up.
+`local.py` overrides `default.py`. `local.py` is included in `.gitignore`.
 
 We use SQLite by default for development and testing.
 You can change settings to use something else.
