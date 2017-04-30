@@ -32,6 +32,7 @@ TIME_ZONE = 'Asia/Kolkata'
 
 # Static assets
 
+os.makedirs(os.path.join(BASE_DIR, 'extstatic'), exist_ok=True)
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), os.path.join(BASE_DIR, 'extstatic')]
 JQUERY_URL = JQUERY_LOCAL_URL
 BOOTSTRAP_CSS_URL = BOOTSTRAP_CSS_LOCAL_URL
