@@ -1,6 +1,7 @@
 # cache/gen
 *.pyc
 __pycache__/
+.mypy_cache
 /README.html
 /readme.html
 output.txt
